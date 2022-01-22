@@ -272,3 +272,22 @@ cc_binary(
     linkshared = 1,
     deps = [":local_service_jni"],
 )
+
+cc_binary(
+    name = "service",
+    srcs = [
+        "service.cc",
+    ],
+    copts = [
+        "-Wno-char-subscripts",
+        "-Wno-sign-compare",
+        "-Wno-switch",
+        "-Wno-unused-but-set-parameter",
+        "-Wno-unused-function",
+        "-Wnonnull-compare",
+    ],
+    deps = [
+        ":local_service_grpc",
+        "@com_github_grpc_grpc//:grpc++",
+    ],
+)
