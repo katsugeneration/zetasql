@@ -16,6 +16,7 @@
 
 load("@com_github_grpc_grpc//bazel:cc_grpc_library.bzl", "cc_grpc_library")
 load("@io_grpc_grpc_java//:java_grpc_library.bzl", "java_grpc_library")
+load("@rules_proto_grpc//python:python_proto_library.bzl", "python_proto_library")
 
 # ZetaSQL Server
 package(default_visibility = ["//zetasql/base:zetasql_implementation"])
@@ -226,6 +227,11 @@ cc_test(
 
 java_proto_library(
     name = "local_service_java_proto",
+    deps = [":local_service_proto"],
+)
+
+python_proto_library(
+    name = "local_service_python_proto",
     deps = [":local_service_proto"],
 )
 

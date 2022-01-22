@@ -316,6 +316,15 @@ cc_proto_library(
                 sha256 = "6e63bd6f5a82de0b84c802390adb8661013bad9ebf910ad7e1f3f72b5f798832",
             )
 
+        # gRPC python
+        if not native.existing_rule("rules_proto_grpc"):
+            http_archive(
+                name = "rules_proto_grpc",
+                # Release 1.0.2
+                url = "https://github.com/rules-proto-grpc/rules_proto_grpc/archive/1.0.2.tar.gz",
+                strip_prefix = "rules_proto_grpc-1.0.2",
+            )
+
     if java_deps:
         if not native.existing_rule("com_google_code_findbugs_jsr305"):
             jvm_maven_import_external(
