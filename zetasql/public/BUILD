@@ -15,6 +15,7 @@
 #
 
 package(default_visibility = ["//visibility:public"])
+load("@com_github_grpc_grpc//bazel:python_rules.bzl", "py_proto_library")
 
 cc_library(
     name = "anonymization_utils",
@@ -889,6 +890,11 @@ java_proto_library(
     deps = [":builtin_function_proto"],
 )
 
+py_proto_library(
+    name = "builtin_function_python_proto",
+    deps = [":builtin_function_proto"],
+)
+
 proto_library(
     name = "deprecation_warning_proto",
     srcs = ["deprecation_warning.proto"],
@@ -902,6 +908,11 @@ cc_proto_library(
 
 java_proto_library(
     name = "deprecation_warning_java_proto",
+    deps = [":deprecation_warning_proto"],
+)
+
+py_proto_library(
+    name = "deprecation_warning_python_proto",
     deps = [":deprecation_warning_proto"],
 )
 
@@ -920,6 +931,11 @@ java_proto_library(
     deps = [":function_proto"],
 )
 
+py_proto_library(
+    name = "function_python_proto",
+    deps = [":function_proto"],
+)
+
 proto_library(
     name = "parse_resume_location_proto",
     srcs = ["parse_resume_location.proto"],
@@ -932,6 +948,11 @@ cc_proto_library(
 
 java_proto_library(
     name = "parse_resume_location_java_proto",
+    deps = [":parse_resume_location_proto"],
+)
+
+py_proto_library(
+    name = "parse_resume_location_python_proto",
     deps = [":parse_resume_location_proto"],
 )
 
@@ -948,6 +969,11 @@ cc_proto_library(
 
 java_proto_library(
     name = "options_java_proto",
+    deps = [":options_proto"],
+)
+
+py_proto_library(
+    name = "options_python_proto",
     deps = [":options_proto"],
 )
 
@@ -970,6 +996,11 @@ java_proto_library(
     deps = [":simple_table_proto"],
 )
 
+py_proto_library(
+    name = "simple_table_python_proto",
+    deps = [":simple_table_proto"],
+)
+
 proto_library(
     name = "simple_constant_proto",
     srcs = ["simple_constant.proto"],
@@ -989,6 +1020,11 @@ java_proto_library(
     deps = [":simple_constant_proto"],
 )
 
+py_proto_library(
+    name = "simple_constant_python_proto",
+    deps = [":simple_constant_proto"],
+)
+
 proto_library(
     name = "parse_location_range_proto",
     srcs = ["parse_location_range.proto"],
@@ -1001,6 +1037,11 @@ cc_proto_library(
 
 java_proto_library(
     name = "parse_location_range_java_proto",
+    deps = [":parse_location_range_proto"],
+)
+
+py_proto_library(
+    name = "parse_location_range_python_proto",
     deps = [":parse_location_range_proto"],
 )
 
@@ -1020,6 +1061,11 @@ java_proto_library(
     deps = [":type_proto"],
 )
 
+py_proto_library(
+    name = "type_proto_python_proto",
+    deps = [":type_proto"],
+)
+
 proto_library(
     name = "type_annotation_proto",
     srcs = ["type_annotation.proto"],
@@ -1033,6 +1079,11 @@ cc_proto_library(
 
 java_proto_library(
     name = "type_annotation_java_proto",
+    deps = [":type_annotation_proto"],
+)
+
+py_proto_library(
+    name = "type_annotation_python_proto",
     deps = [":type_annotation_proto"],
 )
 
@@ -1054,6 +1105,11 @@ java_proto_library(
     deps = [":value_proto"],
 )
 
+py_proto_library(
+    name = "value_python_proto",
+    deps = [":value_proto"],
+)
+
 proto_library(
     name = "type_parameters_proto",
     srcs = ["type_parameters.proto"],
@@ -1072,6 +1128,11 @@ java_proto_library(
     deps = [":type_parameters_proto"],
 )
 
+py_proto_library(
+    name = "type_parameters_python_proto",
+    deps = [":type_parameters_proto"],
+)
+
 proto_library(
     name = "error_location_proto",
     srcs = ["error_location.proto"],
@@ -1084,6 +1145,11 @@ cc_proto_library(
 
 java_proto_library(
     name = "error_location_java_proto",
+    deps = [":error_location_proto"],
+)
+
+py_proto_library(
+    name = "error_location_python_proto",
     deps = [":error_location_proto"],
 )
 
@@ -2480,6 +2546,11 @@ java_proto_library(
     deps = [":annotation_proto"],
 )
 
+py_proto_library(
+    name = "annotation_python_proto",
+    deps = [":annotation_proto"],
+)
+
 proto_library(
     name = "simple_value_proto",
     srcs = ["simple_value.proto"],
@@ -2492,6 +2563,11 @@ cc_proto_library(
 
 java_proto_library(
     name = "simple_value_java_proto",
+    deps = [":simple_value_proto"],
+)
+
+py_proto_library(
+    name = "simple_value_python_proto",
     deps = [":simple_value_proto"],
 )
 

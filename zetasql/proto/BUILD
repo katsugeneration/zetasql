@@ -16,6 +16,7 @@
 
 # Package for non-public protos.
 package(default_visibility = ["//zetasql/base:zetasql_implementation"])
+load("@com_github_grpc_grpc//bazel:python_rules.bzl", "py_proto_library")
 
 proto_library(
     name = "options_proto",
@@ -38,6 +39,11 @@ java_proto_library(
     deps = [":options_proto"],
 )
 
+py_proto_library(
+    name = "options_python_proto",
+    deps = [":options_proto"],
+)
+
 proto_library(
     name = "simple_catalog_proto",
     srcs = ["simple_catalog.proto"],
@@ -57,6 +63,11 @@ cc_proto_library(
 
 java_proto_library(
     name = "simple_catalog_java_proto",
+    deps = [":simple_catalog_proto"],
+)
+
+py_proto_library(
+    name = "simple_catalog_python_proto",
     deps = [":simple_catalog_proto"],
 )
 
@@ -83,6 +94,11 @@ cc_proto_library(
 
 java_proto_library(
     name = "function_java_proto",
+    deps = [":function_proto"],
+)
+
+py_proto_library(
+    name = "function_python_proto",
     deps = [":function_proto"],
 )
 

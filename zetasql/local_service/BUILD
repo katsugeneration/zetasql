@@ -16,7 +16,7 @@
 
 load("@com_github_grpc_grpc//bazel:cc_grpc_library.bzl", "cc_grpc_library")
 load("@io_grpc_grpc_java//:java_grpc_library.bzl", "java_grpc_library")
-load("@rules_proto_grpc//python:python_proto_library.bzl", "python_proto_library")
+load("@com_github_grpc_grpc//bazel:python_rules.bzl", "py_grpc_library", "py_proto_library")
 
 # ZetaSQL Server
 package(default_visibility = ["//zetasql/base:zetasql_implementation"])
@@ -230,7 +230,7 @@ java_proto_library(
     deps = [":local_service_proto"],
 )
 
-python_proto_library(
+py_proto_library(
     name = "local_service_python_proto",
     deps = [":local_service_proto"],
 )
@@ -243,6 +243,14 @@ java_grpc_library(
         "//zetasql/proto:options_java_proto",
         "//zetasql/public:parse_resume_location_java_proto",
         "//zetasql/public:simple_table_java_proto",
+    ],
+)
+
+py_grpc_library(
+    name = "local_service_python_grpc",
+    srcs = [":local_service_proto"],
+    deps = [
+        ":local_service_python_proto",
     ],
 )
 

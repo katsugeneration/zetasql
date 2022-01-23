@@ -40,10 +40,6 @@ zetasql_deps_step_1()
 load("@com_google_zetasql//bazel:zetasql_deps_step_2.bzl", "zetasql_deps_step_2")
 
 zetasql_deps_step_2()
-load("@rules_proto_grpc//python:repositories.bzl", rules_proto_grpc_python_repos="python_repos")
-rules_proto_grpc_python_repos()
-load("@rules_proto_grpc//:repositories.bzl", "rules_proto_grpc_toolchains")
-rules_proto_grpc_toolchains()
 
 load("@com_google_zetasql//bazel:zetasql_deps_step_3.bzl", "zetasql_deps_step_3")
 

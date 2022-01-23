@@ -16,6 +16,7 @@
 
 load("@bazel_skylib//:bzl_library.bzl", "bzl_library")
 load("//zetasql/resolved_ast:build_rules.bzl", "gen_resolved_ast_files")
+load("@com_github_grpc_grpc//bazel:python_rules.bzl", "py_proto_library")
 
 package(default_visibility = ["//zetasql/base:zetasql_implementation"])
 
@@ -88,6 +89,12 @@ cc_proto_library(
 
 java_proto_library(
     name = "resolved_node_kind_java_proto",
+    visibility = ["//visibility:public"],
+    deps = [":resolved_node_kind_proto"],
+)
+
+py_proto_library(
+    name = "resolved_node_kind_python_proto",
     visibility = ["//visibility:public"],
     deps = [":resolved_node_kind_proto"],
 )
@@ -524,6 +531,12 @@ java_proto_library(
     deps = [":resolved_ast_enums_proto"],
 )
 
+py_proto_library(
+    name = "resolved_ast_enums_python_proto",
+    visibility = ["//visibility:public"],
+    deps = [":resolved_ast_enums_proto"],
+)
+
 load("@com_google_protobuf//:protobuf.bzl", "py_proto_library")
 
 py_proto_library(
@@ -557,6 +570,11 @@ java_proto_library(
     deps = [":resolved_ast_proto"],
 )
 
+py_proto_library(
+    name = "resolved_ast_python_proto",
+    deps = [":resolved_ast_proto"],
+)
+
 proto_library(
     name = "serialization_proto",
     srcs = ["serialization.proto"],
@@ -575,6 +593,11 @@ cc_proto_library(
 
 java_proto_library(
     name = "serialization_java_proto",
+    deps = [":serialization_proto"],
+)
+
+py_proto_library(
+    name = "serialization_python_proto",
     deps = [":serialization_proto"],
 )
 
