@@ -45,6 +45,14 @@ load("@com_google_zetasql//bazel:zetasql_deps_step_3.bzl", "zetasql_deps_step_3"
 
 zetasql_deps_step_3()
 
+load("@com_github_grpc_grpc//bazel:grpc_extra_deps.bzl", "grpc_extra_deps")
+grpc_extra_deps()
+load("@io_bazel_rules_python//python:pip.bzl", "pip_install")
+pip_install(
+    name = "grpc_python_dependencies",
+    requirements = "@com_github_grpc_grpc//:requirements.bazel.txt",
+)
+
 load("@com_google_zetasql//bazel:zetasql_deps_step_4.bzl", "zetasql_deps_step_4")
 
 zetasql_deps_step_4()

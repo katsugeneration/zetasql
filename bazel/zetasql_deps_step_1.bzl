@@ -35,3 +35,14 @@ def zetasql_deps_step_1(add_bazel_version = True):
             ],
             sha256 = "219bc7280bbb9305938d76067c816954ad2cc0629063412e8b765e9bc6972304",
         )
+
+    # Required by Protobuf 
+    if "bazel_skylib" not in native.existing_rules():
+        http_archive(
+            name = "bazel_skylib",
+            urls = [
+                "https://mirror.bazel.build/github.com/bazelbuild/bazel-skylib/releases/download/1.0.2/bazel-skylib-1.0.2.tar.gz",
+                "https://github.com/bazelbuild/bazel-skylib/releases/download/1.0.2/bazel-skylib-1.0.2.tar.gz",
+            ],
+            sha256 = "97e70364e9249702246c0e9444bccdc4b847bed1eb03c5a3ece4f83dfe6abc44",
+        )

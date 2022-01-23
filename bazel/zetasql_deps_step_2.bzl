@@ -137,12 +137,21 @@ cc_proto_library(
             http_archive(
                 name = "com_google_absl",
                 # Commit from 2021-08-06
-                url = "https://github.com/abseil/abseil-cpp/archive/bf31a10b65d945665cecfb9d8807702ae4a7fde1.tar.gz",
-                sha256 = "3179b97f202d7e6b81ccf1d835693463498d0523bfcfaf3089a6226f19d97a7f",
-                strip_prefix = "abseil-cpp-bf31a10b65d945665cecfb9d8807702ae4a7fde1",
+                url = "https://github.com/abseil/abseil-cpp/archive/20211102.0.tar.gz",
+                strip_prefix = "abseil-cpp-20211102.0",
             )
 
     if analyzer_deps:
+        if not native.existing_rule("six_archive"):
+            http_archive(
+                name = "six_archive",
+                build_file = "@io_abseil_py//third_party:six.BUILD",
+                # Release 1.10.0
+                url = "https://pypi.python.org/packages/source/s/six/six-1.10.0.tar.gz",
+                sha256 = "105f8d68616f8248e24bf0e9372ef04d3cc10104f1980f54d57b2ce73a5ad56a",
+                strip_prefix = "six-1.10.0",
+            )
+
         # Abseil (Python)
         if not native.existing_rule("com_google_absl_py"):
             # How to update:
@@ -166,10 +175,9 @@ cc_proto_library(
                 name = "io_abseil_py",
                 # Non-release commit from April 18, 2018
                 urls = [
-                    "https://github.com/abseil/abseil-py/archive/bd4d245ac1e36439cb44e7ac46cd1b3e48d8edfa.tar.gz",
+                    "https://github.com/abseil/abseil-py/archive/v1.0.0.tar.gz",
                 ],
-                sha256 = "62a536b13840dc7e3adec333c1ea4c483628ce39a9fdd41e7b3e027f961eb371",
-                strip_prefix = "abseil-py-bd4d245ac1e36439cb44e7ac46cd1b3e48d8edfa",
+                strip_prefix = "abseil-py-1.0.0",
             )
 
     if tools_deps:
@@ -244,29 +252,12 @@ cc_proto_library(
                 strip_prefix = "farmhash-816a4ae622e964763ca0862d9dbd19324a1eaf45",
             )
     if analyzer_deps:
-        # required by protobuf_python
-        if not native.existing_rule("six_archive"):
-            http_archive(
-                name = "six_archive",
-                build_file = "@com_google_protobuf//:six.BUILD",
-                # Release 1.10.0
-                url = "https://pypi.python.org/packages/source/s/six/six-1.10.0.tar.gz",
-                sha256 = "105f8d68616f8248e24bf0e9372ef04d3cc10104f1980f54d57b2ce73a5ad56a",
-            )
-
-        native.bind(
-            name = "six",
-            actual = "@six_archive//:six",
-        )
-
         # Protobuf
         if not native.existing_rule("com_google_protobuf"):
             http_archive(
                 name = "com_google_protobuf",
-                urls = ["https://github.com/protocolbuffers/protobuf/archive/v3.6.1.3.tar.gz"],
-                sha256 = "73fdad358857e120fd0fa19e071a96e15c0f23bb25f85d3f7009abfd4f264a2a",
-                strip_prefix = "protobuf-3.6.1.3",
-                patches = ["@com_google_zetasql//bazel:protobuf-v3.6.1.3.patch"],
+                urls = ["https://github.com/protocolbuffers/protobuf/archive/v3.19.3.tar.gz"],
+                strip_prefix = "protobuf-3.19.3",
             )
 
     # Required by gRPC
@@ -276,6 +267,14 @@ cc_proto_library(
             urls = ["https://github.com/bazelbuild/rules_apple/archive/0.18.0.tar.gz"],
             sha256 = "53a8f9590b4026fbcfefd02c868e48683b44a314338d03debfb8e8f6c50d1239",
             strip_prefix = "rules_apple-0.18.0",
+        )
+
+    # Required by gRPC
+    if "io_bazel_rules_python" not in native.existing_rules():
+        http_archive(
+            name = "io_bazel_rules_python",
+            url = "https://github.com/bazelbuild/rules_python/archive/0.6.0.tar.gz",
+            strip_prefix = "rules_python-0.6.0",
         )
 
     # Required by gRPC
@@ -301,9 +300,8 @@ cc_proto_library(
         if not native.existing_rule("com_github_grpc_grpc"):
             http_archive(
                 name = "com_github_grpc_grpc",
-                urls = ["https://github.com/grpc/grpc/archive/v1.24.2.tar.gz"],
-                sha256 = "fd040f5238ff1e32b468d9d38e50f0d7f8da0828019948c9001e9a03093e1d8f",
-                strip_prefix = "grpc-1.24.2",
+                urls = ["https://github.com/grpc/grpc/archive/v1.43.0.tar.gz"],
+                strip_prefix = "grpc-1.43.0",
             )
 
         # gRPC Java
