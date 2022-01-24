@@ -33,11 +33,6 @@ workspace(name = "com_google_zetasql")
 # future).
 
 # such that 'my_repo_deps'
-android_sdk_repository(
-    name = "androidsdk",
-    build_tools_version = "30.0.3"
-)
-
 load("@com_google_zetasql//bazel:zetasql_deps_step_1.bzl", "zetasql_deps_step_1")
 
 zetasql_deps_step_1()
