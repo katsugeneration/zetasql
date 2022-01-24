@@ -257,6 +257,7 @@ cc_proto_library(
             http_archive(
                 name = "com_google_protobuf",
                 urls = ["https://github.com/protocolbuffers/protobuf/archive/v3.19.3.tar.gz"],
+                sha256 = "390191a0d7884b3e52bb812c440ad1497b9d484241f37bb8e2ccc8c2b72d6c36",
                 strip_prefix = "protobuf-3.19.3",
             )
 
@@ -274,6 +275,7 @@ cc_proto_library(
         http_archive(
             name = "io_bazel_rules_python",
             url = "https://github.com/bazelbuild/rules_python/archive/0.6.0.tar.gz",
+            sha256 = "a30abdfc7126d497a7698c29c46ea9901c6392d6ed315171a6df5ce433aa4502",
             strip_prefix = "rules_python-0.6.0",
         )
 
@@ -301,6 +303,7 @@ cc_proto_library(
             http_archive(
                 name = "com_github_grpc_grpc",
                 urls = ["https://github.com/grpc/grpc/archive/v1.43.0.tar.gz"],
+                sha256 = "9647220c699cea4dafa92ec0917c25c7812be51a18143af047e20f3fb05adddc",
                 strip_prefix = "grpc-1.43.0",
             )
 
