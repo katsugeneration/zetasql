@@ -34,6 +34,7 @@ workspace(name = "com_google_zetasql")
 
 # such that 'my_repo_deps'
 android_sdk_repository(
+    name = "androidsdk",
     build_tools_version = "30.0.3"
 )
 
