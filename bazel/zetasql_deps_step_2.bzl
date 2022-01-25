@@ -855,9 +855,9 @@ java_library(
         if not native.existing_rule("google_bazel_common"):
             http_archive(
                 name = "google_bazel_common",
-                strip_prefix = "bazel-common-e768dbfea5bac239734b3f59b2a1d7464c6dbd26",
-                urls = ["https://github.com/google/bazel-common/archive/e768dbfea5bac239734b3f59b2a1d7464c6dbd26.zip"],
-                sha256 = "17f66ba76073a290add024a4ce7f5f92883832b7da85ffd7677e1f5de9a36153",
+                strip_prefix = "bazel-common-2e42988b7a3d1e3b11ab4db2d7c28f794500a672",
+                urls = ["https://github.com/google/bazel-common/archive/2e42988b7a3d1e3b11ab4db2d7c28f794500a672.zip"],
+                sha256 = "61cd7c2a24a1b066848a68c56deca799dd9d0329cb9032d1686859cdd2c05be2",
             )
     if evaluator_deps:
         if not native.existing_rule("org_publicsuffix"):
